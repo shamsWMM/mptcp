@@ -16,7 +16,6 @@ request = pc.makeRequestRSpec()
 
 # Node client
 node_client = request.RawPC('client')
-node_client.disk_image = 'urn:publicid:IDN+wisc.cloudlab.us+image+cloudlab-PG0:mptcp-apt-kernel'
 node_client.addService(pg.Execute('/bin/sh','/usr/bin/sudo /bin/bash /local/repository/CloudLab/client.sh'))
 iface0 = node_client.addInterface('interface-0', pg.IPv4Address('192.168.10.2','255.255.255.0'))
 iface1 = node_client.addInterface('interface-4', pg.IPv4Address('192.168.20.2','255.255.255.0'))
@@ -35,7 +34,6 @@ iface5 = node_emulator1.addInterface('interface-2', pg.IPv4Address('192.168.1.1'
 
 # Node server
 node_server = request.RawPC('server')
-node_server.disk_image = 'urn:publicid:IDN+wisc.cloudlab.us+image+cloudlab-PG0:mptcp-apt-kernel'
 node_server.addService(pg.Execute('/bin/sh','/usr/bin/sudo /bin/bash /local/repository/CloudLab/server.sh'))
 iface6 = node_server.addInterface('interface-10', pg.IPv4Address('192.168.3.1','255.255.255.0'))
 iface7 = node_server.addInterface('interface-12', pg.IPv4Address('192.168.4.1','255.255.255.0'))
