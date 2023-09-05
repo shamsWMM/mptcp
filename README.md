@@ -1,13 +1,13 @@
 # mptcpl4spqc
-## Part 1: Creating the topology on CloudLab
-### Section 1.1: Creating the topology on CloudLab
-### Section 1.1 Creating a basic profile and instantiating it
+## 1: Creating the topology on CloudLab
+### 1.1 Creating a basic profile and instantiating it
 1. Log in to your CloudLab account.
 2. Navigate to Experiments > Create Experiment Profile.
 3. Create a name for the profile such as "pqcexperiment".
 4. Select Git Repo and copy and paste the link for [this GitHub repository](https://github.com/shamsWMM/Multipath-Wireless-Link-Traces.git).
 5. Click Confirm then Create.
-
+### 1.2 Instantiating the profile and implementing L4S
+1. Click instantiate on the profile page created in section [1.1 above](1-1-Creating-a-basic-profile-and-instantiating-it). 
 
 
 
