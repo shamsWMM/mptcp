@@ -6,6 +6,7 @@
 2. Navigate to Experiments > Create Experiment Profile.
 3. Create a name for the profile such as "pqcexperiment".
 4. Select Git Repo and copy and paste the link for [this GitHub repository](https://github.com/shamsWMM/Multipath-Wireless-Link-Traces.git).
+5. Click Confirm.
 
 
 
