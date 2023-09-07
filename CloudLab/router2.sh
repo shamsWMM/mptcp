@@ -14,3 +14,17 @@ sudo tc qdisc del dev $ifacetoS root # don’t worry if you get RTNETLINK  error
 sudo tc qdisc replace dev $ifacetoS root handle 1: htb default 3 
 sudo tc class add dev $ifacetoS parent 1: classid 1:3 htb rate 100mbit 
 sudo tc qdisc add dev $ifacetoS parent 1:3 handle 3: bfifo limit 375000 
+
+# 7 9 23 Implement L4S source: https://github.com/L4STeam/linux
+wget https://github.com/L4STeam/linux/releases/download/testing-build/l4s-testing.zip
+unzip l4s-testing.zip
+sudo dpkg --install debian_build/*
+sudo update-grub  # This should auto-detect the new kernel
+# You can optionally set newly installed kernel as the default, e.g., editing GRUB_DEFAULT in /etc/default/grub
+# You can now reboot (and may have to manually select the kernel in grub)
+# Be sure that the newly installed kernel is successfully used, e.g., checking output of
+sudo reboot 0
+# uname -r
+# Be sure to ensure the required modules are loaded before doing experiments, e.g.,
+# sudo modprobe sch_dualpi2
+# sudo modprobe tcp_prague
