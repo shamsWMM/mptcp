@@ -23,7 +23,7 @@ sudo update-grub  # This should auto-detect the new kernel
 # You can optionally set newly installed kernel as the default, e.g., editing GRUB_DEFAULT in /etc/default/grub
 # You can now reboot (and may have to manually select the kernel in grub)
 # Be sure that the newly installed kernel is successfully used, e.g., checking output of
-# sudo reboot 0
+# sudo reboot 0 MUST REBOOT TO LOAD KERNEL
 # uname -r
 # Be sure to ensure the required modules are loaded before doing experiments, e.g.,
 # sudo modprobe sch_dualpi2
