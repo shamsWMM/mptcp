@@ -10,6 +10,10 @@ sudo apt -y install moreutils
 
 #Instead add the following
 sudo apt -y install bison
+sudo apt -y install flex
+sudo apt -y install pkg-config
+
+
 #Download iproute2 package
 sudo wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/iproute2/5.15.0-1ubuntu2/iproute2_5.15.0.orig.tar.xz
 #Extract content
