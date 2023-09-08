@@ -1,29 +1,26 @@
-# install packages
+#install packages
 sudo apt update
 sudo apt -y install iperf3
-sudo apt -y install moreutils
+#sudo apt -y install moreutils
 
-# Below commented lines are no longer useful for linux kernel 5.15
-# run sysctl commands to enable mptcp
-# sudo sysctl -w net.mptcp.mptcp_enabled=1
-# sudo sysctl -w net.mptcp.mptcp_checksum=0
-
-#Instead add the following
+#Download iproute2 package
+# Add the following
 sudo apt -y install bison
 sudo apt -y install flex
 sudo apt -y install pkg-config
-
-
-#Download iproute2 package
 sudo wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/iproute2/5.15.0-1ubuntu2/iproute2_5.15.0.orig.tar.xz
 #Extract content
 sudo tar -xf iproute2_5.15.0.orig.tar.xz
 cd iproute2-5.15.0/
 sudo make
+cd
 
-# load and configure mptcp congestion control algorithms
-sudo modprobe mptcp_balia 
-sudo sysctl -w net.ipv4.tcp_congestion_control=balia
+#Follow the following page 
+# https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-multipath-tcp_configuring-and-managing-networking
+sudo apt -y install systemtap
+echo "net.mptcp.enabled=1" | sudo tee /etc/sysctl.d/90-enable-MPTCP.conf
+sudo sysctl -p /etc/sysctl.d/90-enable-MPTCP.conf
+
 
 ######################################################
 # remove Cloudlab created automatically added routes
@@ -39,3 +36,14 @@ sudo ifconfig $iface2 down; sudo ifconfig $iface2 up
 # add the new routes manually 
 sudo route add -net 192.168.10.0/24 gw 192.168.3.2 
 sudo route add -net 192.168.20.0/24 gw 192.168.4.2
+
+#Add IP address 192.1688.4.1 as a new MPTCP endpoint on the server:
+sudo ip mptcp endpoint add 192.168.4.1 dev $iface2 signal
+
+#Start the iperf3 server:
+sudo iperf3 -s
+
+######
+# Verify that MPTCP is enabled in the kernel:
+# sysctl -a | grep mptcp.enabled
+# results in 'net.mptcp.enabled = 1'
