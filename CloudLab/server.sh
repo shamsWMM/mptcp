@@ -3,9 +3,19 @@ sudo apt update
 sudo apt -y install iperf3
 sudo apt -y install moreutils
 
+# Below commented lines are no longer useful for linux kernel 5.15
 # run sysctl commands to enable mptcp
-sudo sysctl -w net.mptcp.mptcp_enabled=1 
-sudo sysctl -w net.mptcp.mptcp_checksum=0
+# sudo sysctl -w net.mptcp.mptcp_enabled=1
+# sudo sysctl -w net.mptcp.mptcp_checksum=0
+
+#Instead add the following
+sudo apt -y install bison
+#Download iproute2 package
+sudo wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/iproute2/5.15.0-1ubuntu2/iproute2_5.15.0.orig.tar.xz
+#Extract content
+sudo tar -xf iproute2_5.15.0.orig.tar.xz
+cd iproute2-5.15.0/
+sudo make
 
 # load and configure mptcp congestion control algorithms
 sudo modprobe mptcp_balia 
