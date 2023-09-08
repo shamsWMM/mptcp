@@ -1,28 +1,27 @@
-# install packages
+#install packages
 sudo apt update
-sudo apt -y install iperf3 net-tools
-sudo apt -y install moreutils
-sudo apt -y install apache2 # install for the web browsing experiments where client will act as the web server
+sudo apt -y install iperf3
 
-# run sysctl commands to enable mptcp
-sudo sysctl -w net.mptcp.mptcp_enabled=1 
-sudo sysctl -w net.mptcp.mptcp_checksum=0
-
-# load and configure mptcp congestion control algorithms
-sudo modprobe mptcp_balia 
-sudo modprobe mptcp_coupled 
-sudo modprobe mptcp_olia 
-sudo modprobe mptcp_wvegas
-
-# configure mptcp congestion control algorithm to one
-sudo sysctl -w net.ipv4.tcp_congestion_control=balia
-
-# install iproute-mptcp package 
-sudo git clone https://github.com/multipath-tcp/iproute-mptcp.git
-cd iproute-mptcp 
-sudo make 
-sudo make install 
+#Download iproute2 package
+# Add the following
+sudo apt -y install bison
+sudo apt -y install flex
+sudo apt -y install pkg-config
+sudo wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/iproute2/5.15.0-1ubuntu2/iproute2_5.15.0.orig.tar.xz
+#Extract content
+sudo tar -xf iproute2_5.15.0.orig.tar.xz
+cd iproute2-5.15.0/
+sudo make
 cd
+
+#Follow the following page 
+# https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-multipath-tcp_configuring-and-managing-networking
+sudo apt -y install systemtap
+echo "net.mptcp.enabled=1" | sudo tee /etc/sysctl.d/90-enable-MPTCP.conf
+sudo sysctl -p /etc/sysctl.d/90-enable-MPTCP.conf
+# Configure the client to accept up to 1 additional remote address, as provided by the server:
+sudo ip mptcp limits set add_addr_accepted 1
+
 
 # get control and experiment interface names
 iface1=$(ifconfig | grep -B1 "inet 192.168.10.2" | head -n1 | cut -f1 -d:)
@@ -50,3 +49,5 @@ sudo ip route add 192.168.20.0/24 dev $iface2 scope link table 2
 sudo ip route add 192.168.3.0/24 via 192.168.10.1 dev $iface1 table 1 
 sudo ip route add 192.168.4.0/24 via 192.168.20.1 dev $iface2 table 2
 
+# Connect the client to the server:
+sudo iperf3 -c 192.168.3.1 -t 3
