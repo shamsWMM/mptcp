@@ -48,6 +48,9 @@ sudo route add -net 192.168.20.0/24 gw 192.168.4.2
 # 1 because In our case, we need just another one sub-flow for the WLAN interface. 
 # This max number limit, depends on how much interfaces (a.k.a sub-flows) you gonna use besides your default interface.
 sudo ip mptcp limits set subflow 1
+sudo ip mptcp endpoint add 192.168.4.1 dev $iface2 subflow signal
+# verify above step using sudo ip mptcp limit show
+
 #Start the iperf3 server:
 sudo iperf3 -s
 
