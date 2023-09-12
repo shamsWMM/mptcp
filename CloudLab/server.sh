@@ -4,6 +4,8 @@ sudo apt -y install iperf3
 #sudo apt -y install moreutils
 #install MPTCP Daemon
 sudo apt -y install mptcpd
+#install python 
+sudo apt install python-is-python3
 #install bmon
 sudo apt -y install bmon
 
@@ -47,7 +49,9 @@ sudo route add -net 192.168.20.0/24 gw 192.168.4.2
 #Set the total number of allowed sub-flows (whether they are initiated locally or by the peer) to 1. 
 # 1 because In our case, we need just another one sub-flow for the WLAN interface. 
 # This max number limit, depends on how much interfaces (a.k.a sub-flows) you gonna use besides your default interface.
-sudo ip mptcp limits set subflow 1
+#sudo sysctl net.mptcp.enabled
+sudo ip mptcp limits set add_addr_accepted 1
+sudo ip mptcp limits set subflow 2
 sudo ip mptcp endpoint add 192.168.4.1 dev $iface2 subflow signal
 # verify above step using sudo ip mptcp limit show
 
