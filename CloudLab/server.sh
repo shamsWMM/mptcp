@@ -73,6 +73,7 @@ mkdir test
 cd test
 #do the below manually for testing
 #sudo dd if=/dev/zero of=upload_test bs=1M count=10000000
+#sudo mptcpize run python -m http.server 8000
 cd
 #Start the iperf3 server:
 ###sudo iperf3 -s
