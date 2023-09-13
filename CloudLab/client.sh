@@ -20,7 +20,7 @@ sudo apt -y install systemtap
 echo "net.mptcp.enabled=1" | sudo tee /etc/sysctl.d/90-enable-MPTCP.conf
 sudo sysctl -p /etc/sysctl.d/90-enable-MPTCP.conf
 # Configure the client to accept up to 1 additional remote address, as provided by the server:
-sudo ip mptcp limits set add_addr_accepted 1
+# sudo ip mptcp limits set add_addr_accepted 1
 
 
 # get control and experiment interface names
@@ -37,9 +37,9 @@ sudo route add -net 192.168.3.0/24 gw 192.168.10.1
 sudo route add -net 192.168.4.0/24 gw 192.168.20.1
 
 # disable mptcp on control interface and enable in the experiment interfaces
-sudo ip link set dev $ifaceC multipath off 
-sudo ip link set dev $iface1 multipath on 
-sudo ip link set dev $iface2 multipath on 
+#sudo ip link set dev $ifaceC multipath off 
+#sudo ip link set dev $iface1 multipath on 
+#sudo ip link set dev $iface2 multipath on 
 
 # Configure routing rules
 sudo ip rule add from 192.168.10.2 table 1 
@@ -48,6 +48,9 @@ sudo ip route add 192.168.10.0/24 dev $iface1 scope link table 1
 sudo ip route add 192.168.20.0/24 dev $iface2 scope link table 2 
 sudo ip route add 192.168.3.0/24 via 192.168.10.1 dev $iface1 table 1 
 sudo ip route add 192.168.4.0/24 via 192.168.20.1 dev $iface2 table 2
+
+#configure mptcp
+sudo ip mptcp limits set subflow 2 add_addr_accepted 2
 
 # Connect the client to the server:
 sudo iperf3 -c 192.168.3.1 -t 3
