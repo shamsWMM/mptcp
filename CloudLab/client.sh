@@ -22,9 +22,9 @@ sudo apt -y install bmon
 
 #Follow the following page 
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-multipath-tcp_configuring-and-managing-networking
-sudo apt -y install systemtap
-echo "net.mptcp.enabled=1" | sudo tee /etc/sysctl.d/90-enable-MPTCP.conf
-sudo sysctl -p /etc/sysctl.d/90-enable-MPTCP.conf
+#sudo apt -y install systemtap
+#echo "net.mptcp.enabled=1" | sudo tee /etc/sysctl.d/90-enable-MPTCP.conf
+#sudo sysctl -p /etc/sysctl.d/90-enable-MPTCP.conf
 # Configure the client to accept up to 1 additional remote address, as provided by the server:
 # sudo ip mptcp limits set add_addr_accepted 1
 
