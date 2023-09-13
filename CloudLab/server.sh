@@ -55,6 +55,9 @@ sudo ip mptcp limits set subflow 2
 sudo ip mptcp endpoint add 192.168.4.1 dev $iface2 subflow signal
 # verify above step using sudo ip mptcp limit show
 
+#testing a download 
+#serve a big file
+sudo dd if=/dev/zero of=upload_test bs=1M count=10000000
 #Start the iperf3 server:
 sudo iperf3 -s
 
