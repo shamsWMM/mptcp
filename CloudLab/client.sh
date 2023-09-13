@@ -20,6 +20,7 @@
 #install bmon
 #sudo apt -y install bmon
 
+
 #Follow the following page 
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-multipath-tcp_configuring-and-managing-networking
 #sudo apt -y install systemtap
@@ -62,3 +63,15 @@ sudo ip route add 192.168.4.0/24 via 192.168.20.1 dev $iface2 table 2
 
 # Connect the client to the server:
 #sudo iperf3 -c 192.168.3.1 -t 3
+
+
+
+
+
+
+
+####echo "net.mptcp.enabled=1" > /etc/sysctl.d/90-enable-MPTCP.conf
+####sysctl -p /etc/sysctl.d/90-enable-MPTCP.conf
+
+####apt-get update && apt-get upgrade
+####apt-get install network-manager
