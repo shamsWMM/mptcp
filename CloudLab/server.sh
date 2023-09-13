@@ -5,7 +5,7 @@ sudo apt -y install iperf3
 #install MPTCP Daemon
 sudo apt -y install mptcpd
 #install python 
-sudo apt install python-is-python3
+sudo apt install python3
 #install bmon
 sudo apt -y install bmon
 #install nload
