@@ -72,7 +72,7 @@ cd test
 sudo dd if=/dev/zero of=upload_test bs=1M count=10000000
 cd
 #Start the iperf3 server:
-sudo iperf3 -s
+###sudo iperf3 -s
 
 ######
 # Verify that MPTCP is enabled in the kernel:
