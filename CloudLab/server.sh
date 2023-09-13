@@ -1,15 +1,15 @@
 #install packages
-sudo apt update
-sudo apt -y install iperf3
+#sudo apt update
+#sudo apt -y install iperf3
 #sudo apt -y install moreutils
 #install MPTCP Daemon
-sudo apt -y install mptcpd
+#sudo apt -y install mptcpd
 #install python 
-sudo apt install python3
+#sudo apt install python3
 #install bmon
-sudo apt -y install bmon
+#sudo apt -y install bmon
 #install nload
-sudo apt -y install nload
+#sudo apt -y install nload
 
 ##Download iproute2 package
 ## Add the following
@@ -46,12 +46,12 @@ sudo route add -net 192.168.20.0/24 gw 192.168.4.2
 
 #mimicing https://medium.com/high-performance-network-programming/how-to-setup-and-configure-mptcp-on-ubuntu-c423dbbf76cc
 # Configure routing rules (the mimicing part is the similar configuration btw client and server)
-sudo ip rule add from 192.168.3.1 table 1 
-sudo ip rule add from 192.168.4.1 table 2 
-sudo ip route add 192.168.3.0/24 dev $iface1 scope link table 1
-sudo ip route add 192.168.4.0/24 dev $iface2 scope link table 2 
-sudo ip route add 192.168.10.0/24 via 192.168.3.2 dev $iface1 table 1 
-sudo ip route add 192.168.20.0/24 via 192.168.4.2 dev $iface2 table 2
+#sudo ip rule add from 192.168.3.1 table 1 
+#sudo ip rule add from 192.168.4.1 table 2 
+#sudo ip route add 192.168.3.0/24 dev $iface1 scope link table 1
+#sudo ip route add 192.168.4.0/24 dev $iface2 scope link table 2 
+#sudo ip route add 192.168.10.0/24 via 192.168.3.2 dev $iface1 table 1 
+#sudo ip route add 192.168.20.0/24 via 192.168.4.2 dev $iface2 table 2
 
 ##Add IP address 192.1688.4.1 as a new MPTCP endpoint on the server:
 #sudo ip mptcp endpoint add 192.168.4.1 dev $iface2 signal
@@ -63,19 +63,19 @@ sudo ip route add 192.168.20.0/24 via 192.168.4.2 dev $iface2 table 2
 #sudo sysctl net.mptcp.enabled
 #sudo ip mptcp limits set add_addr_accepted 1
 #sudo ip mptcp limits set subflow 2
-sudo ip mptcp limits set subflow 2 add_addr_accepted 2
-sudo ip mptcp endpoint add 192.168.4.1 dev $iface1 subflow signal
+#sudo ip mptcp limits set subflow 2 add_addr_accepted 2
+#sudo ip mptcp endpoint add 192.168.4.1 dev $iface1 subflow signal
 # verify above step using sudo ip mptcp limit show
 
 #testing a download 
 #serve a big file
-mkdir test
-cd test
+#mkdir test
+#cd test
 #do the below manually for testing
 #sudo dd if=/dev/zero of=upload_test bs=1M count=10000000
 #sudo mptcpize run python -m http.server 8000
 #sudo ip mptcp monitor
-cd
+#cd
 #Start the iperf3 server:
 ###sudo iperf3 -s
 
