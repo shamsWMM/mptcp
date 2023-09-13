@@ -46,12 +46,12 @@ sudo route add -net 192.168.20.0/24 gw 192.168.4.2
 
 #mimicing https://medium.com/high-performance-network-programming/how-to-setup-and-configure-mptcp-on-ubuntu-c423dbbf76cc
 # Configure routing rules (the mimicing part is the similar configuration btw client and server)
-#sudo ip rule add from 192.168.3.1 table 1 
-#sudo ip rule add from 192.168.4.1 table 2 
-#sudo ip route add 192.168.3.0/24 dev $iface1 scope link table 1
-#sudo ip route add 192.168.4.0/24 dev $iface2 scope link table 2 
-#sudo ip route add 192.168.10.0/24 via 192.168.3.2 dev $iface1 table 1 
-#sudo ip route add 192.168.20.0/24 via 192.168.4.2 dev $iface2 table 2
+sudo ip rule add from 192.168.3.1 table 1 
+sudo ip rule add from 192.168.4.1 table 2 
+sudo ip route add 192.168.3.0/24 dev $iface1 scope link table 1
+sudo ip route add 192.168.4.0/24 dev $iface2 scope link table 2 
+sudo ip route add 192.168.10.0/24 via 192.168.3.2 dev $iface1 table 1 
+sudo ip route add 192.168.20.0/24 via 192.168.4.2 dev $iface2 table 2
 
 ##Add IP address 192.1688.4.1 as a new MPTCP endpoint on the server:
 #sudo ip mptcp endpoint add 192.168.4.1 dev $iface2 signal
