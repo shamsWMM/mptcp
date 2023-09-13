@@ -51,6 +51,7 @@ sudo ip route add 192.168.4.0/24 via 192.168.20.1 dev $iface2 table 2
 
 #configure mptcp
 sudo ip mptcp limits set subflow 2 add_addr_accepted 2
+sudo ip mptcp endpoint add 192.168.20.2 dev $iface2 subflow signal
 
 # Connect the client to the server:
 sudo iperf3 -c 192.168.3.1 -t 3
