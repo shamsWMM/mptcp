@@ -69,7 +69,8 @@ sudo ip mptcp endpoint add 192.168.4.1 dev $iface1 subflow signal
 #serve a big file
 mkdir test
 cd test
-sudo dd if=/dev/zero of=upload_test bs=1M count=10000000
+#do the below manually for testing
+#sudo dd if=/dev/zero of=upload_test bs=1M count=10000000
 cd
 #Start the iperf3 server:
 ###sudo iperf3 -s
