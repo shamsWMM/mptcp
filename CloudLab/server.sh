@@ -8,6 +8,8 @@ sudo apt -y install mptcpd
 sudo apt install python-is-python3
 #install bmon
 sudo apt -y install bmon
+#install nload
+sudo apt -y install nload
 
 ##Download iproute2 package
 ## Add the following
