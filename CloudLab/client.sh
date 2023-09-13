@@ -4,15 +4,21 @@ sudo apt -y install iperf3
 sudo apt -y install nload
 #Download iproute2 package
 # Add the following
-sudo apt -y install bison
-sudo apt -y install flex
-sudo apt -y install pkg-config
-sudo wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/iproute2/5.15.0-1ubuntu2/iproute2_5.15.0.orig.tar.xz
+#sudo apt -y install bison
+#sudo apt -y install flex
+#sudo apt -y install pkg-config
+#sudo wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/iproute2/5.15.0-1ubuntu2/iproute2_5.15.0.orig.tar.xz
 #Extract content
-sudo tar -xf iproute2_5.15.0.orig.tar.xz
-cd iproute2-5.15.0/
-sudo make
-cd
+#sudo tar -xf iproute2_5.15.0.orig.tar.xz
+#cd iproute2-5.15.0/
+#sudo make
+#cd
+#add those like in server (reconsider later)
+sudo apt -y install mptcpd
+#install python 
+sudo apt install python-is-python3
+#install bmon
+sudo apt -y install bmon
 
 #Follow the following page 
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-multipath-tcp_configuring-and-managing-networking
