@@ -55,4 +55,4 @@ sudo ip mptcp limits set subflow 2 add_addr_accepted 2
 sudo ip mptcp endpoint add 192.168.20.2 dev $iface1 subflow signal
 
 # Connect the client to the server:
-sudo iperf3 -c 192.168.3.1 -t 3
+#sudo iperf3 -c 192.168.3.1 -t 3
