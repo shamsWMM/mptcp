@@ -1,7 +1,7 @@
 #install packages
 sudo apt update
 sudo apt -y install iperf3
-
+sudo apt -y install nload
 #Download iproute2 package
 # Add the following
 sudo apt -y install bison
