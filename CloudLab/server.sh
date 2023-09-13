@@ -50,8 +50,9 @@ sudo route add -net 192.168.20.0/24 gw 192.168.4.2
 # 1 because In our case, we need just another one sub-flow for the WLAN interface. 
 # This max number limit, depends on how much interfaces (a.k.a sub-flows) you gonna use besides your default interface.
 #sudo sysctl net.mptcp.enabled
-sudo ip mptcp limits set add_addr_accepted 1
-sudo ip mptcp limits set subflow 2
+#sudo ip mptcp limits set add_addr_accepted 1
+#sudo ip mptcp limits set subflow 2
+sudo ip mptcp limits set subflow 2 add_addr_accepted 2
 sudo ip mptcp endpoint add 192.168.4.1 dev $iface2 subflow signal
 # verify above step using sudo ip mptcp limit show
 
