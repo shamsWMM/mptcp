@@ -62,12 +62,15 @@ sudo ip route add 192.168.20.0/24 via 192.168.4.2 dev $iface2 table 2
 #sudo ip mptcp limits set add_addr_accepted 1
 #sudo ip mptcp limits set subflow 2
 sudo ip mptcp limits set subflow 2 add_addr_accepted 2
-sudo ip mptcp endpoint add 192.168.4.1 dev $iface2 subflow signal
+sudo ip mptcp endpoint add 192.168.4.1 dev $iface1 subflow signal
 # verify above step using sudo ip mptcp limit show
 
 #testing a download 
 #serve a big file
+mkdir test
+cd test
 sudo dd if=/dev/zero of=upload_test bs=1M count=10000000
+cd
 #Start the iperf3 server:
 sudo iperf3 -s
 
