@@ -1,7 +1,7 @@
 #install packages
-sudo apt update
-sudo apt -y install iperf3
-sudo apt -y install nload
+#sudo apt update
+#sudo apt -y install iperf3
+#sudo apt -y install nload
 #Download iproute2 package
 # Add the following
 #sudo apt -y install bison
@@ -14,11 +14,11 @@ sudo apt -y install nload
 #sudo make
 #cd
 #add those like in server (reconsider later)
-sudo apt -y install mptcpd
+#sudo apt -y install mptcpd
 #install python 
-sudo apt install python3
+#sudo apt install python3
 #install bmon
-sudo apt -y install bmon
+#sudo apt -y install bmon
 
 #Follow the following page 
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-multipath-tcp_configuring-and-managing-networking
@@ -56,9 +56,9 @@ sudo ip route add 192.168.3.0/24 via 192.168.10.1 dev $iface1 table 1
 sudo ip route add 192.168.4.0/24 via 192.168.20.1 dev $iface2 table 2
 
 #configure mptcp
-sudo ip mptcp limits set subflow 2 add_addr_accepted 2
+#sudo ip mptcp limits set subflow 2 add_addr_accepted 2
 # Wrong? sudo ip mptcp endpoint add 192.168.20.2 dev $iface2 subflow signal
-sudo ip mptcp endpoint add 192.168.20.2 dev $iface1 subflow signal
+#sudo ip mptcp endpoint add 192.168.20.2 dev $iface1 subflow signal
 
 # Connect the client to the server:
 #sudo iperf3 -c 192.168.3.1 -t 3
